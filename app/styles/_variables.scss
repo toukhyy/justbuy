@@ -1,0 +1,45 @@
+:root {
+  --color-primary: #a1ccd1;
+  --color-primary-light: #7ed56f;
+  --color-primary-dark: #28b485;
+
+  --color-secondary-light: #f4f2de;
+  --color-secondary-dark: #e9b384;
+
+  --color-tertiary-light: #7c9d96;
+  --color-tertiary-dark: #5643fa;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  // WIDTH
+  --w-xs: 20rem;
+  --w-sm: 24rem;
+  --w-md: 28rem;
+  --w-lg: 32rem;
+  --w-xl: 36rem;
+  --w-2xl: 42rem;
+  --w-3xl: 48rem;
+  --w-4xl: 56rem;
+  --w-5xl: 64rem;
+  --w-6xl: 72rem;
+  --w-7xl: 80rem;
+
+  // BORDER RADIUS
+  --r-sm: 0.125rem; /* 2px */
+  --r-md: 0.375rem; /* 6px */
+  --r-lg: 0.5rem; /* 8px */
+  --r-xl: 0.75rem; /* 12px */
+  --r-2xl: 1rem; /* 16px */
+  --r-3xl: 1.5rem; /* 24px */
+  --r-full: 9999px;
+}

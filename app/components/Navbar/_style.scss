@@ -1,0 +1,23 @@
+@use '../../styles/mixins' as *;
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8rem;
+
+  .authBtn {
+    background-color: var(--color-primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--r-2xl);
+    @include mq(lg) {
+      // background-color: green;
+    }
+    @include mq(md) {
+      // background-color: blue;
+    }
+    @include mq(sm) {
+      // background-color: red;
+    }
+  }
+}
