@@ -1,11 +1,9 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
 import { Adapter } from 'next-auth/adapters';
-import Stripe from 'stripe';
-
-const prisma = new PrismaClient();
+import { stripe } from '@/app/lib/stripe';
+import { prisma } from '@/app/lib/prisma';
 
 export const authOpts: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
@@ -17,10 +15,6 @@ export const authOpts: NextAuthOptions = {
   ],
   events: {
     createUser: async ({ user }) => {
-      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-        apiVersion: '2022-11-15',
-      });
-
       const { id } = await stripe.customers.create({
         name: user.name || undefined,
         email: user.email || undefined,

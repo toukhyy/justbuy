@@ -4,4 +4,8 @@
 @use 'layout';
 
 // COMPONENTS
-@use '../components//Navbar/style';
+@use '../components/Navbar/navBar';
+@use '../components/Product/product';
+
+// PAGES
+@use '../products/[id]/productPage';
