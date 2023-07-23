@@ -1,0 +1,52 @@
+@use '../../styles/mixins' as *;
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0.5rem;
+  // background-color: aqua;
+  max-width: var(--w-7xl);
+  margin: 0 auto;
+
+  .LogoContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    .text {
+      font-weight: 800;
+    }
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    .profileImg {
+      border-radius: var(--r-full);
+    }
+  }
+
+  .authBtn {
+    background-color: var(--color-primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--r-2xl);
+    font-weight: 600;
+    // text-transform: uppercase;
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+      transition: background-color 0.5s;
+    }
+
+    @include mq(lg) {
+      // background-color: green;
+    }
+    @include mq(md) {
+      // background-color: blue;
+    }
+    @include mq(sm) {
+      // background-color: red;
+    }
+  }
+}

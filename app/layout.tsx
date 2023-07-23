@@ -18,7 +18,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="container">
+      <body>
         <NavBar user={session?.user} />
         {children}
       </body>
