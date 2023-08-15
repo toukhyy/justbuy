@@ -1,5 +1,5 @@
-import { stripe } from './lib/stripe';
-import { Product } from './components';
+import { stripe } from '@/lib/stripe';
+import { ProductCard } from '@/components';
 
 const getProducts = async () => {
   const productsWithoutPrices = (await stripe.products.list()).data;
@@ -28,9 +28,9 @@ export default async function Home() {
   const products = await getProducts();
 
   return (
-    <main className="container gridLayout">
+    <main className="container grid-layout">
       {products.map((product) => (
-        <Product key={product.id} {...product} />
+        <ProductCard key={product.id} {...product} />
       ))}
     </main>
   );

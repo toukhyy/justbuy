@@ -1,35 +1,35 @@
 import Image from 'next/image';
 import { formatPrice } from '@/utils/formatPrice';
-import './_productPage.scss';
+import { ProductSearchParams } from '@/types/SearchParams';
+import { AddCartBtn } from '@/components';
+import './style.scss';
 
 type Props = {
-  searchParams: {
-    name: string;
-    image: string;
-    description?: string;
-    price?: number;
-  };
-  params?: { id: string };
+  searchParams: ProductSearchParams;
+  params: { id: string };
 };
 
-function Products({ searchParams }: Props) {
+function Products({ searchParams, params }: Props) {
   const { name, image, description, price } = searchParams;
+
   return (
-    <main className="container productPage">
+    <main className="container product-page">
       {/* img */}
-      <div className="imgContainer">
+      <div className="product-page__img">
         <Image
           src={image}
-          fill={true}
+          width={270}
+          height={270}
           alt={`Photo of Product: ${name}`}
           style={{ objectFit: 'contain' }}
         />
       </div>
 
-      <div className="textContainer">
-        <h2 className="label">{name}</h2>
-        <p className="description">{description}</p>
-        {price && <p className="price">${formatPrice(price)}</p>}
+      <div className="product-page__content">
+        <h2 className="product-page__label">{name}</h2>
+        <p className="product-page__description">{description}</p>
+        {price && <p className="product-page__price">${formatPrice(price)}</p>}
+        <AddCartBtn productData={{ name, price, id: params.id, image }} />
       </div>
       {/* text */}
     </main>

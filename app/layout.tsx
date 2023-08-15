@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { NavBar } from './components';
+import { NavBar } from '@/components';
 import { getServerSession } from 'next-auth/next';
 import { authOpts } from './api/auth/[...nextauth]/route';
+import ReduxProvider from '@/store/Provider';
 import './styles/style.scss';
 
 export const metadata: Metadata = {
@@ -19,8 +20,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavBar user={session?.user} />
-        {children}
+        <ReduxProvider>
+          <NavBar user={session?.user} />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );

@@ -23,10 +23,10 @@
 
   &__cart {
     position: relative;
+    cursor: pointer;
     &__icon {
       height: 1.7rem;
       width: 1.7rem;
-      cursor: pointer;
     }
     &__count {
       display: flex;
