@@ -8,12 +8,13 @@ import { AiOutlineBarcode } from 'react-icons/ai';
 import { IoCartSharp } from 'react-icons/io5';
 import { toggleCart } from '@/store/slices/cart';
 import { Cart } from '../index';
+import { motion, AnimatePresence } from 'framer-motion';
 import './style.scss';
 
 type Props = {} & Pick<Session, 'user'>;
 
 export function NavBar({ user }: Props) {
-  const cart = useAppSelector((state) => state.cart);
+  const { cart, isOpen } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
   return (
@@ -25,9 +26,15 @@ export function NavBar({ user }: Props) {
       <ul className="nav-bar__user-menu">
         <li className="nav-bar__cart" onClick={() => dispatch(toggleCart())}>
           <IoCartSharp className="nav-bar__cart__icon" />
-          <div className="nav-bar__cart__count">
-            <span>{cart.cart.length}</span>
-          </div>
+          {cart.length > 0 && (
+            <motion.div
+              animate={{ scale: 1 }}
+              initial={{ scale: 0 }}
+              className="nav-bar__cart__count"
+            >
+              <span>{cart.length}</span>
+            </motion.div>
+          )}
         </li>
         {user ? (
           <div className="nav-bar__profile">
@@ -54,7 +61,7 @@ export function NavBar({ user }: Props) {
           </li>
         )}
       </ul>
-      <Cart />
+      <AnimatePresence>{isOpen && <Cart />}</AnimatePresence>
     </nav>
   );
 }

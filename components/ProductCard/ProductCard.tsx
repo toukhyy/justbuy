@@ -37,7 +37,10 @@ export function ProductCard({
       <div className="product-card__content">
         <h2 className="product-card__label">{name}</h2>
         <p className="product-card__description">{description}</p>
-        {price && <p className="product-card__price">${formatPrice(price)}</p>}
+
+        {price && price > 0 ? (
+          <p className="product-card__price">${price}</p>
+        ) : null}
       </div>
     </div>
   );

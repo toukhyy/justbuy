@@ -5,4 +5,9 @@
   border-radius: var(--r-md);
   padding: 0.7rem 1rem;
   background-color: var(--color-secondary-dark);
+
+  &:disabled {
+    background-color: var(--color-grey-light-4);
+    cursor: default;
+  }
 }

@@ -31,7 +31,6 @@ function Products({ searchParams, params }: Props) {
         {price && <p className="product-page__price">${formatPrice(price)}</p>}
         <AddCartBtn productData={{ name, price, id: params.id, image }} />
       </div>
-      {/* text */}
     </main>
   );
 }

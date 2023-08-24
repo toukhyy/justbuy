@@ -19,18 +19,22 @@ export function AddCartBtn({ productData }: Props) {
   const handleAddItem = () => {
     dispatch(
       addProduct({
-        id: id,
-        image: image,
-        name: name,
-        price: price,
+        id,
+        image,
+        name,
+        price,
         quantity: 1,
       })
     );
   };
 
   return (
-    <button className="add-cart-btn" onClick={handleAddItem}>
-      Add to Cart
+    <button
+      disabled={!(price && price > 0)}
+      className="add-cart-btn"
+      onClick={handleAddItem}
+    >
+      Add to cart
     </button>
   );
 }
