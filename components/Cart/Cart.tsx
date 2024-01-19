@@ -5,18 +5,29 @@ import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { formatPrice } from '@/utils/formatPrice';
 import { BiSolidMinusCircle, BiSolidPlusCircle } from 'react-icons/bi';
 import { RiShoppingBag3Fill } from 'react-icons/ri';
+import { FaArrowLeft } from 'react-icons/fa';
 import { Divider } from '@/components/index';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import './style.scss';
+import { useEffect } from 'react';
 
 type Props = {};
 
 export function Cart({}: Props) {
-  const { isOpen, cart } = useAppSelector((state) => state.cart);
+  const { cart } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   const handleQuantity = (id: string, operation: 'increase' | 'decrease') => {
     dispatch(changeQuantity({ id, operation }));
   };
+
+  useEffect(() => {
+    if (typeof window != 'undefined' && window.document) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   const totalPrice = formatPrice(
     cart.reduce((prev, curr) => prev + Number(curr.price!) * curr.quantity, 0)
@@ -31,6 +42,13 @@ export function Cart({}: Props) {
       onClick={() => dispatch(toggleCart())}
     >
       <div className="cart__side-bar" onClick={(e) => e.stopPropagation()}>
+        <button
+          className="cart__close-btn"
+          onClick={() => dispatch(toggleCart())}
+        >
+          <FaArrowLeft size={14} />
+          <span>Return</span>
+        </button>
         <p className="cart__side-bar__title">My Cart</p>
         <Divider size="TWO-THIRDS" />
         <motion.ul layout className="cart__list hide-scroll-bar">

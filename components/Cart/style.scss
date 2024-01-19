@@ -1,3 +1,5 @@
+@use '../../app/styles/mixins' as *;
+
 .cart {
   position: fixed;
   top: 0;
@@ -5,15 +7,19 @@
   bottom: 0;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.1);
+  overflow-y: hidden;
 
   &__side-bar {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.5rem;
     position: absolute;
     top: 0;
     right: 0;
     background-color: white;
     height: 100%;
     width: 25vw;
+    @include mq(sm) {
+      width: 100vw;
+    }
 
     &__title {
       font-size: 18px;
@@ -23,6 +29,16 @@
       margin-bottom: 8px;
       text-transform: uppercase;
       color: var(--color-grey-dark-2);
+    }
+  }
+
+  &__close-btn {
+    color: var(--color-grey-dark-3);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    & > span {
+      font-size: 12px;
     }
   }
 

@@ -1,7 +1,14 @@
+@use '../../styles/mixins' as *;
+
 .product-page {
   display: flex;
   padding: 2rem 0.5rem;
   gap: 2.5rem;
+
+  @include mq(sm) {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
 
   &__img {
     flex: 1;
@@ -25,16 +32,27 @@
     font-weight: 600;
     font-size: 30px;
     margin-bottom: 0.5rem;
+    @include mq(sm) {
+      font-size: 18px;
+      text-align: center;
+    }
   }
   &__description {
     font-size: 16px;
     margin-bottom: 1.5rem;
     max-width: var(--w-md);
+    @include mq(sm) {
+      font-size: 12px;
+      margin-bottom: 1rem;
+    }
   }
   &__price {
     font-weight: 600;
     font-size: 22px;
     margin-bottom: 1.5rem;
+    @include mq(sm) {
+      font-size: 15px;
+    }
   }
   &__add-btn {
     align-self: center;
@@ -43,5 +61,10 @@
     border-radius: var(--r-md);
     padding: 0.7rem 1rem;
     background-color: var(--color-secondary-dark);
+
+    @include mq(sm) {
+      font-size: 12px;
+      padding: 0.5rem 1rem;
+    }
   }
 }
